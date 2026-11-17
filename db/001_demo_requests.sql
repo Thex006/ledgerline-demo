@@ -1,13 +1,12 @@
 -- Ledgerline demo requests with lead scoring.
-create extension if not exists citext;
-create extension if not exists pgcrypto;
+-- Plain Postgres 13+ only (gen_random_uuid is built in), so it also runs on embedded PGlite locally.
 
 create table if not exists demo_requests (
   id              uuid primary key default gen_random_uuid(),
   created_at      timestamptz not null default now(),
   updated_at      timestamptz not null default now(),
   full_name       text not null,
-  work_email      citext not null,
+  work_email      text not null, -- stored lowercased by the API
   company         text not null,
   role            text not null check (role in ('founder','finance_lead','controller','ops','agency','other')),
   revenue_band    text not null check (revenue_band in ('lt_1m','1_5m','5_10m','10_20m','gt_20m')),

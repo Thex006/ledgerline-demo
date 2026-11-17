@@ -40,6 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .taste-skill/
+.data/
 shots/
 
 # Playwright CLI output (may contain credentials)
