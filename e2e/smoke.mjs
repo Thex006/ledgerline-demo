@@ -30,7 +30,8 @@ console.log(`Browser: ${browser.browserType().name()} ${browser.version()}`);
 
 // ---------- Desktop ----------
 {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  // Pin motion on: Windows "Show animations" off would otherwise freeze the hero feed.
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: "no-preference" });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   // The deliberate empty submit returns 422; anything else logged as an error is a failure.
@@ -55,8 +56,12 @@ console.log(`Browser: ${browser.browserType().name()} ${browser.version()}`);
   // Live feed animates (rows change over time)
   const firstRow = () => page.locator('[aria-label="Recently reconciled transactions"] li').first().innerText();
   const before = await firstRow();
-  await page.waitForTimeout(2200);
-  check("hero feed cycles", before !== (await firstRow()));
+  let cycled = false;
+  for (let i = 0; i < 12 && !cycled; i++) {
+    await page.waitForTimeout(500);
+    cycled = before !== (await firstRow());
+  }
+  check("hero feed cycles", cycled);
 
   // Pricing toggle
   const scalePrice = () => page.locator("#pricing article").nth(1).locator(".tabular-nums").first().innerText();
@@ -81,7 +86,8 @@ console.log(`Browser: ${browser.browserType().name()} ${browser.version()}`);
   // Form: empty submit shows field errors
   await page.locator("#demo").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: /Book my demo/ }).click();
-  await page.waitForTimeout(600);
+  // First API call compiles the route under `npm run dev`, so allow time.
+  await page.getByText("Pick your role").waitFor({ timeout: 20000 }).catch(() => {});
   check("empty submit shows field errors", (await page.locator("#demo p.text-danger:not(:empty)").count()) >= 5);
 
   // Form: valid submit
@@ -99,7 +105,7 @@ console.log(`Browser: ${browser.browserType().name()} ${browser.version()}`);
   await page.fill("#storesCount", "3");
   await page.getByRole("button", { name: /Book my demo/ }).click();
   const status = page.getByRole("status");
-  await status.waitFor({ timeout: 10000 }).catch(() => {});
+  await status.waitFor({ timeout: 20000 }).catch(() => {});
   check("valid submit shows hot-lead confirmation", (await status.innerText().catch(() => "")).includes("fast lane"));
 
   // API contract
