@@ -32,7 +32,7 @@ export function Problem() {
           {PAINS.map((p) => (
             <Tile key={p.title} className="h-full">
               <p.icon className="size-5 text-accent" />
-              <h3 className="mt-6 text-xl font-semibold tracking-[-0.02em] text-foreground">{p.title}</h3>
+              <h3 className="mt-6 text-balance text-xl font-semibold tracking-[-0.02em] text-foreground">{p.title}</h3>
               <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
             </Tile>
           ))}

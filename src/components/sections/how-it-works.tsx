@@ -40,7 +40,7 @@ export function HowItWorks() {
                 <Tile className="flex gap-5">
                   <span className="font-mono text-sm text-accent">{s.n}</span>
                   <div>
-                    <h3 className="flex items-center gap-3 text-lg font-semibold tracking-[-0.02em] text-foreground">
+                    <h3 className="flex items-center gap-3 text-balance text-lg font-semibold tracking-[-0.02em] text-foreground">
                       <s.icon className="size-4 text-muted" />
                       {s.title}
                     </h3>

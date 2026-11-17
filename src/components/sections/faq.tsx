@@ -32,13 +32,6 @@ export const FAQS = [
   },
 ];
 
-const STATS = [
-  { value: "€2.1B", label: "GMV reconciled" },
-  { value: "99.7%", label: "Lines auto-matched" },
-  { value: "9 min", label: "Median monthly close" },
-  { value: "€38k", label: "Avg. leakage found, year one" },
-];
-
 export function Faq() {
   return (
     <section id="faq" className="screen scroll-mt-16">
@@ -47,15 +40,8 @@ export function Faq() {
           <SectionHeading
             eyebrow="Objections, answered"
             title="The questions finance leads ask before switching."
+            sub="Bring the hardest one you have to the demo. These seven come up on every call."
           />
-          <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius)] border border-border bg-border">
-            {STATS.map((s) => (
-              <div key={s.label} className="bg-card p-5">
-                <dt className="text-sm text-muted">{s.label}</dt>
-                <dd className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-foreground">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
         <Accordion type="single" collapsible className="border-t border-border md:col-span-7">
           {FAQS.map((f, i) => (
