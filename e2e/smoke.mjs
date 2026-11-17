@@ -1,6 +1,8 @@
 // End-to-end smoke test against a running server.
-// Usage: npm run build && npm start   (in one terminal)
-//        node e2e/smoke.mjs [baseUrl]  (in another; needs `npx playwright install chromium` once)
+// Usage: npm run dev                  (in one terminal)
+//        node e2e/smoke.mjs [baseUrl]  (in another)
+// Uses Playwright's bundled Chromium if installed, otherwise your installed Chrome or Edge,
+// so no browser download is needed. Force one with E2E_BROWSER=chrome|msedge.
 import { chromium } from "playwright";
 
 const BASE = process.argv[2] ?? "http://localhost:3000";
@@ -10,7 +12,21 @@ const check = (name, ok, detail = "") => {
   console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? `  (${detail})` : ""}`);
 };
 
-const browser = await chromium.launch();
+async function launchBrowser() {
+  const forced = process.env.E2E_BROWSER;
+  const attempts = forced ? [forced] : ["bundled", "chrome", "msedge"];
+  for (const channel of attempts) {
+    try {
+      return await chromium.launch(channel === "bundled" ? {} : { channel });
+    } catch {
+      // try the next browser
+    }
+  }
+  throw new Error("No browser found. Install Chrome or Edge, or run `npx playwright install chromium`.");
+}
+
+const browser = await launchBrowser();
+console.log(`Browser: ${browser.browserType().name()} ${browser.version()}`);
 
 // ---------- Desktop ----------
 {
