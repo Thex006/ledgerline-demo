@@ -2,10 +2,22 @@ import { NextResponse } from "next/server";
 import { demoRequestSchema } from "@/lib/validation";
 import { scoreLead } from "@/lib/lead-score";
 import { insertDemoRequest } from "@/lib/db";
+import { createRateLimiter } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
+// 5 demo requests per minute per IP: stops form spam without bothering real buyers.
+const allow = createRateLimiter({ limit: 5, windowMs: 60_000 });
+
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
+  if (!allow(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "Too many requests. Please wait a minute and try again." },
+      { status: 429 },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
