@@ -1,4 +1,3 @@
-import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -33,27 +32,39 @@ export const FAQS = [
   },
 ];
 
+const STATS = [
+  { value: "€2.1B", label: "GMV reconciled" },
+  { value: "99.7%", label: "Lines auto-matched" },
+  { value: "9 min", label: "Median monthly close" },
+  { value: "€38k", label: "Avg. leakage found, year one" },
+];
+
 export function Faq() {
   return (
-    <section id="faq" className="scroll-mt-16 mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
-      <div className="grid gap-12 md:grid-cols-[1fr_1.6fr] md:gap-16">
-        <Reveal>
+    <section id="faq" className="screen scroll-mt-16">
+      <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+        <div className="md:col-span-5 md:pr-10">
           <SectionHeading
             eyebrow="Objections, answered"
-            title="The questions finance leads ask before they switch."
-            sub="Still unsure? Bring the hardest question you've got to the demo."
+            title="The questions finance leads ask before switching."
           />
-        </Reveal>
-        <Reveal delay={0.06}>
-          <Accordion type="single" collapsible className="border-t border-border">
-            {FAQS.map((f, i) => (
-              <AccordionItem key={f.q} value={`item-${i}`}>
-                <AccordionTrigger>{f.q}</AccordionTrigger>
-                <AccordionContent>{f.a}</AccordionContent>
-              </AccordionItem>
+          <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius)] border border-border bg-border">
+            {STATS.map((s) => (
+              <div key={s.label} className="bg-card p-5">
+                <dt className="text-sm text-muted">{s.label}</dt>
+                <dd className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-foreground">{s.value}</dd>
+              </div>
             ))}
-          </Accordion>
-        </Reveal>
+          </dl>
+        </div>
+        <Accordion type="single" collapsible className="border-t border-border md:col-span-7">
+          {FAQS.map((f, i) => (
+            <AccordionItem key={f.q} value={`item-${i}`}>
+              <AccordionTrigger>{f.q}</AccordionTrigger>
+              <AccordionContent>{f.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </section>
   );

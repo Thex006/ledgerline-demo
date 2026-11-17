@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { Reveal } from "@/components/shared/reveal";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Tile, TileLabel } from "@/components/shared/tile";
 import { Button } from "@/components/ui/button";
@@ -30,19 +29,18 @@ export function RoiCalculator() {
   const r = useMemo(() => calculateRoi(values), [values]);
 
   return (
-    <section id="roi" className="scroll-mt-16 mx-auto max-w-6xl px-5 py-24 md:px-8 md:py-32">
-      <Reveal>
+    <section id="roi" className="screen scroll-mt-16">
+      <div className="wrap">
         <SectionHeading
           eyebrow="ROI calculator"
-          title="See what manual reconciliation is really costing you."
-          sub="Move the sliders to match your brand. Every number below is based on median results across 412 Ledgerline customers."
+          title="What manual reconciliation costs your brand."
+          sub="Move the sliders to match your numbers. Results use median outcomes across Ledgerline customers."
         />
-      </Reveal>
 
-      <Reveal delay={0.08} className="mt-14">
-        <div className="grid gap-3 md:grid-cols-5">
-          <Tile className="md:col-span-2">
-            <div className="space-y-9">
+      <div className="mt-12">
+        <div className="grid gap-6 md:grid-cols-12">
+          <Tile className="md:col-span-5">
+            <div className="space-y-8">
               {FIELDS.map((f) => (
                 <div key={f.key}>
                   <div className="mb-4 flex items-baseline justify-between gap-4">
@@ -64,17 +62,17 @@ export function RoiCalculator() {
                 </div>
               ))}
             </div>
-            <p className="mt-10 border-t border-border pt-5 text-xs leading-relaxed text-muted-2">
+            <p className="mt-8 border-t border-border pt-5 text-xs leading-relaxed text-muted-2">
               Assumes Ledgerline automates {Math.round(AUTOMATION_RATE * 100)}% of reconciliation hours and recovers{" "}
               {(LEAKAGE_RATE * 100).toFixed(2)}% of revenue in missed refunds, fee overcharges and lost chargebacks.
               Plan cost uses annual billing.
             </p>
           </Tile>
 
-          <div className="grid gap-3 sm:grid-cols-2 md:col-span-3">
+          <div className="grid gap-6 sm:grid-cols-2 md:col-span-7">
             <Tile className="sm:col-span-2 bg-accent text-accent-ink border-transparent">
               <TileLabel className="text-accent-ink/70">Net gain in year one</TileLabel>
-              <p className="mt-3 text-5xl font-semibold tabular-nums tracking-[-0.04em] md:text-7xl" aria-live="polite">
+              <p className="mt-3 text-4xl font-semibold tabular-nums tracking-[-0.04em] md:text-6xl" aria-live="polite">
                 {formatEUR(r.netGain)}
               </p>
               <p className="mt-3 text-sm font-medium text-accent-ink/80">
@@ -97,7 +95,8 @@ export function RoiCalculator() {
             </Tile>
           </div>
         </div>
-      </Reveal>
+      </div>
+      </div>
     </section>
   );
 }

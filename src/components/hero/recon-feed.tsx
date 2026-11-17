@@ -62,7 +62,7 @@ export function ReconFeed({ className }: { className?: string }) {
           Syncing
         </span>
       </div>
-      <ul className="relative mt-4 h-[312px] overflow-hidden" aria-label="Recently reconciled transactions">
+      <ul className="relative mt-3 h-[260px] overflow-hidden" aria-label="Recently reconciled transactions">
         <AnimatePresence initial={false} mode="popLayout">
           {rows.map((r) => (
             <motion.li

@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import { ArrowRight, CalendarCheck2, Check, Loader2 } from "lucide-react";
-import { Reveal } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,7 +30,7 @@ const SUCCESS: Record<LeadTier, { title: string; body: string }> = {
 const PROMISES = [
   "We reconcile one of your real payouts live, on the call",
   "You leave with your leakage estimate, in euros",
-  "20 minutes. No 6-person sales relay.",
+  "20 minutes with one specialist, start to finish",
 ];
 
 const initial = {
@@ -91,16 +90,16 @@ export function DemoSignup() {
   }
 
   return (
-    <section id="demo" className="scroll-mt-16 border-t border-border bg-card/30">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 md:grid-cols-[1fr_1.15fr] md:gap-16 md:px-8 md:py-32">
-        <Reveal>
+    <section id="demo" className="screen scroll-mt-16 border-t border-border bg-card/30">
+      <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
+        <div className="md:col-span-5 md:pr-10">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">Book a demo</p>
           <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.035em] text-foreground md:text-6xl md:leading-[1.02]">
             Your next close could take 9 minutes.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">
-            Every month you wait is another week of your team in spreadsheets and another slice of revenue leaking out
-            of your payouts. Fix it before the next month-end.
+            Every month you wait costs another week of spreadsheet work and another slice of revenue lost in your
+            payouts. Book the call before your next month-end.
           </p>
           <ul className="mt-8 space-y-3">
             {PROMISES.map((p) => (
@@ -110,9 +109,9 @@ export function DemoSignup() {
               </li>
             ))}
           </ul>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.08}>
+        <div className="md:col-span-7">
           <div className="relative rounded-[var(--radius)] border border-border-strong bg-card p-6 md:p-8">
             <AnimatePresence mode="wait" initial={false}>
               {tier ? (
@@ -177,20 +176,20 @@ export function DemoSignup() {
                         </>
                       ) : (
                         <>
-                          Get my 9-minute close <ArrowRight />
+                          Book my demo <ArrowRight />
                         </>
                       )}
                     </Button>
                     <p className="mt-3 h-5 text-center text-sm text-danger" aria-live="polite">
                       {formError}
                     </p>
-                    <p className="text-center text-xs text-muted-2">No credit card. No spam. We reply within one business day.</p>
+                    <p className="text-center text-xs text-muted-2">We reply within one business day.</p>
                   </div>
                 </motion.form>
               )}
             </AnimatePresence>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

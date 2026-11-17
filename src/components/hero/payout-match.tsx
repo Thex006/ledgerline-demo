@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
 import { Check } from "lucide-react";
 import { Tile, TileLabel } from "@/components/shared/tile";
 
@@ -11,42 +8,36 @@ const LINES = [
   ["Rolling reserve", "−€87.00"],
 ] as const;
 
+/** Static product fragment: one Shopify payout broken down and matched to its bank deposit. */
 export function PayoutMatch({ className }: { className?: string }) {
-  const reduce = useReducedMotion();
   return (
     <Tile className={className}>
-      <TileLabel>Payout ↔ Bank</TileLabel>
-      <dl className="mt-4 space-y-2 font-mono text-[12px]">
-        {LINES.map(([k, v], i) => (
-          <motion.div
-            key={k}
-            className="flex justify-between gap-3"
-            initial={reduce ? false : { opacity: 0, x: -8 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 + i * 0.12 }}
-          >
+      <div className="flex items-center justify-between">
+        <TileLabel>Payout PO-48213 ↔ Bank</TileLabel>
+        <span className="rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] text-accent ring-1 ring-inset ring-accent/25">
+          Matched in 0.4s
+        </span>
+      </div>
+      <dl className="mt-5 space-y-3 font-mono text-[13px]">
+        {LINES.map(([k, v]) => (
+          <div key={k} className="flex justify-between gap-3 border-b border-border pb-3">
             <dt className="truncate text-muted">{k}</dt>
             <dd className="tabular-nums text-foreground">{v}</dd>
-          </motion.div>
+          </div>
         ))}
       </dl>
-      <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
+      <div className="mt-5 flex items-center justify-between">
         <div>
-          <p className="font-mono text-[11px] text-muted-2">Deposited · Revolut Business</p>
-          <p className="font-mono text-lg tabular-nums text-foreground">€18,402.17</p>
+          <p className="font-mono text-[11px] text-muted-2">Deposited to Revolut Business</p>
+          <p className="mt-1 font-mono text-2xl tabular-nums text-foreground">€18,402.17</p>
         </div>
-        <motion.span
-          className="flex size-9 items-center justify-center rounded-full bg-accent text-accent-ink"
-          initial={reduce ? false : { scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 380, damping: 18, delay: 0.9 }}
-          aria-label="Matched"
-        >
+        <span className="flex size-10 items-center justify-center rounded-full bg-accent text-accent-ink" aria-label="Matched">
           <Check className="size-4" strokeWidth={3} />
-        </motion.span>
+        </span>
       </div>
+      <p className="mt-5 border-t border-border pt-4 text-sm text-muted">
+        Journal ready: 4 lines to Xero, evidence attached. <span className="text-foreground">Approve with one click.</span>
+      </p>
     </Tile>
   );
 }

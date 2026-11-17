@@ -65,3 +65,18 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* One container for every section and the nav: equal left/right edges. */
+.wrap {
+  width: min(1200px, 100% - 2 * clamp(20px, 6vw, 120px));
+  margin-inline: auto;
+}
+
+/* Every section after the hero is exactly one screen at desktop and grows on small screens. */
+.screen {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 56px;
+}

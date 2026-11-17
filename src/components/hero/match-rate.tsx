@@ -11,18 +11,17 @@ export function MatchRate({ className }: { className?: string }) {
   return (
     <Tile className={className}>
       <TileLabel>Auto-match rate</TileLabel>
-      <p className="mt-3 text-5xl font-semibold tracking-[-0.04em] text-foreground">
+      <p className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-foreground">
         99.7<span className="text-muted">%</span>
       </p>
-      <div className="mt-5 grid grid-cols-12 gap-1" aria-hidden>
+      <div className="mt-4 grid grid-cols-12 gap-1" aria-hidden>
         {Array.from({ length: CELLS }, (_, i) => (
           <motion.span
             key={i}
             className={FLAGGED.has(i) ? "aspect-square rounded-[3px] bg-warn" : "aspect-square rounded-[3px] bg-accent/80"}
             initial={reduce ? false : { opacity: 0.08 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: 0.3 + i * 0.018 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.8 + i * 0.018 }}
           />
         ))}
       </div>

@@ -39,6 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.taste-skill/
+shots/
 
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
