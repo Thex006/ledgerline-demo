@@ -6,12 +6,13 @@ import { createRateLimiter } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
-// 5 demo requests per minute per IP: stops form spam without bothering real buyers.
+// 5 demo requests per minute per IP in production: stops form spam without bothering real buyers.
+// Off in `npm run dev` so the e2e suite can be rerun back to back.
 const allow = createRateLimiter({ limit: 5, windowMs: 60_000 });
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
-  if (!allow(ip)) {
+  if (process.env.NODE_ENV === "production" && !allow(ip)) {
     return NextResponse.json(
       { ok: false, error: "Too many requests. Please wait a minute and try again." },
       { status: 429 },
