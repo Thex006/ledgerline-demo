@@ -14,16 +14,16 @@ type FieldErrors = Partial<Record<string, string>>;
 
 const SUCCESS: Record<LeadTier, { title: string; body: string }> = {
   hot: {
-    title: "You're in the fast lane.",
-    body: "A reconciliation specialist will email you within 2 business hours with calendar slots, and we'll bring a live walkthrough built on a brand your size.",
+    title: "You’re in the fast lane.",
+    body: "A reconciliation specialist will email you within 2 business hours with calendar slots, and we’ll bring a live walkthrough built on a brand your size.",
   },
   warm: {
     title: "Request received.",
-    body: "We'll email you within one business day to book your 20-minute demo. Have last month's Shopify payout report handy and we'll reconcile it live.",
+    body: "We’ll email you within one business day to book your 20-minute demo. Have last month’s Shopify payout report handy and we’ll reconcile it live.",
   },
   cold: {
-    title: "Thanks, it's on its way.",
-    body: "We'll send our recorded walkthrough and the free Shopify month-end checklist our customers used before Ledgerline. Reply anytime to book a live demo.",
+    title: "Thanks, it’s on its way.",
+    body: "We’ll send our recorded walkthrough and the free Shopify month-end checklist our customers used before Ledgerline. Reply anytime to book a live demo.",
   },
 };
 
@@ -171,7 +171,7 @@ export function DemoSignup() {
                     <Button type="submit" size="lg" className="w-full" disabled={status === "submitting"}>
                       {status === "submitting" ? (
                         <>
-                          <Loader2 className="animate-spin" /> Booking your slot
+                          <Loader2 className="animate-spin" /> Booking your slot…
                         </>
                       ) : (
                         <>

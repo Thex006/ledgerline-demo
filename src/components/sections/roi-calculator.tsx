@@ -81,8 +81,8 @@ export function RoiCalculator() {
               </p>
             </Tile>
             <Metric label="Hours handed back / year" value={`${r.hoursSavedPerYear.toLocaleString("en-IE")} h`} note={`Worth ${formatEUR(r.laborSavings)} in finance time`} />
-            <Metric label="Leakage recovered / year" value={formatEUR(r.leakageRecovered)} note="Refunds, fees and chargebacks you're currently eating" />
-            <Metric label="Payback period" value={Number.isFinite(r.paybackDays) ? `${r.paybackDays} days` : "—"} note="Most customers pay it back inside their first close" />
+            <Metric label="Leakage recovered / year" value={formatEUR(r.leakageRecovered)} note="Refunds, fees and chargebacks you’re losing today" />
+            <Metric label="Payback period" value={Number.isFinite(r.paybackDays) ? `${r.paybackDays} days` : "—"} note="The median customer pays it back inside the first close" />
             <Tile className="flex flex-col justify-between gap-5">
               <div>
                 <TileLabel>Recommended</TileLabel>

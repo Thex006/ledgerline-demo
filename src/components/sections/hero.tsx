@@ -23,7 +23,7 @@ export function Hero() {
         <Enter delay={0.1}>
           <p className="mt-5 max-w-[46rem] text-pretty text-lg leading-relaxed text-muted">
             Ledgerline matches every Shopify payout, fee, refund and chargeback to your bank and your Xero or
-            QuickBooks ledger. Month-end stops eating your finance team&apos;s first week.
+            QuickBooks ledger. Month-end stops eating your finance team’s first week.
           </p>
         </Enter>
         <Enter delay={0.15}>

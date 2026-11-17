@@ -11,12 +11,12 @@ const PAINS = [
   {
     icon: FileSpreadsheet,
     title: "A controller doing spreadsheet archaeology",
-    body: "60+ hours a month in CSV exports, VLOOKUPs and Slack threads asking “what is this €312.40?”. A senior hire, paid to copy and paste.",
+    body: "60+ hours a month in CSV exports, VLOOKUPs and Slack threads asking “what is this €312.40?”, so a senior hire gets paid to copy and paste.",
   },
   {
     icon: TrendingDown,
     title: "Revenue that leaks out unseen",
-    body: "Duplicate refunds. Gateway overcharges. Chargebacks that expire before anyone responds. At €5M revenue that is typically €15–25k a year.",
+    body: "Duplicate refunds, gateway overcharges and chargebacks that expire unanswered cost a €5M brand €15–25k a year, based on Ledgerline’s first-month audits.",
   },
 ];
 
