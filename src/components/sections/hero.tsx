@@ -8,19 +8,15 @@ import { MatchRate } from "@/components/hero/match-rate";
 export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100svh-4rem)] flex-col justify-center overflow-hidden py-10">
-      <div
-        aria-hidden
-        className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
-      />
       <div className="wrap relative">
         <Enter>
-          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-muted">
             <span className="size-1.5 rounded-full bg-accent" />
             AI reconciliation for Shopify brands doing €1M–€20M
           </p>
         </Enter>
         <Enter delay={0.05}>
-          <h1 className="mt-5 text-balance text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[4.5rem]">
+          <h1 className="mt-5 text-balance text-[3rem] font-semibold leading-[0.98] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-[4.5rem]">
             Close your books in 9 minutes, <span className="text-muted-2">not 9 days.</span>
           </h1>
         </Enter>

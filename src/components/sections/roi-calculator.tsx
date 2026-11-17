@@ -53,6 +53,7 @@ export function RoiCalculator() {
                   </div>
                   <Slider
                     aria-labelledby={`roi-${f.key}`}
+                    thumbLabel={f.label}
                     min={f.min}
                     max={f.max}
                     step={f.step}

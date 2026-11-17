@@ -25,8 +25,8 @@ export function CloseTimer({ className }: { className?: string }) {
     <Tile className={className}>
       <div className="flex h-full flex-col justify-between gap-5">
         <div className="flex items-start justify-between gap-4">
-          <TileLabel>October close · Nordhaus GmbH</TileLabel>
-          <span className="font-mono text-[11px] text-accent">Closed ✓</span>
+          <TileLabel>October close</TileLabel>
+          <span className="font-mono text-xs text-accent">Closed ✓</span>
         </div>
         <div className="space-y-4">
           <Bar label="Before Ledgerline" value="9 days" scale={1} muted reduce={!!reduce} />

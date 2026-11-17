@@ -14,21 +14,21 @@ export function PayoutMatch({ className }: { className?: string }) {
     <Tile className={className}>
       <div className="flex items-center justify-between">
         <TileLabel>Payout PO-48213 ↔ Bank</TileLabel>
-        <span className="rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] text-accent ring-1 ring-inset ring-accent/25">
+        <span className="rounded-full bg-accent/12 px-2.5 py-1 font-mono text-xs text-accent ring-1 ring-inset ring-accent/25">
           Matched in 0.4s
         </span>
       </div>
       <dl className="mt-5 space-y-3 font-mono text-[13px]">
         {LINES.map(([k, v]) => (
           <div key={k} className="flex justify-between gap-3 border-b border-border pb-3">
-            <dt className="truncate text-muted">{k}</dt>
+            <dt className="min-w-0 text-muted">{k}</dt>
             <dd className="tabular-nums text-foreground">{v}</dd>
           </div>
         ))}
       </dl>
       <div className="mt-5 flex items-center justify-between">
         <div>
-          <p className="font-mono text-[11px] text-muted-2">Deposited to Revolut Business</p>
+          <p className="font-mono text-xs text-muted-2">Deposited to Revolut Business</p>
           <p className="mt-1 font-mono text-2xl tabular-nums text-foreground">€18,402.17</p>
         </div>
         <span className="flex size-10 items-center justify-center rounded-full bg-accent text-accent-ink" aria-label="Matched">

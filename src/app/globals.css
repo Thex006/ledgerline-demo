@@ -7,8 +7,8 @@
   --foreground: #f4f6f8;
   --card: #0d0f12;
   --card-2: #12151a;
-  --muted: #8a919c;
-  --muted-2: #5b616b;
+  --muted: #a3aab5;
+  --muted-2: #8b929d;
   --border: rgb(255 255 255 / 0.08);
   --border-strong: rgb(255 255 255 / 0.16);
   --accent: #c8f560;
@@ -54,16 +54,27 @@ body {
   color: var(--accent-ink);
 }
 
-/* Faint geometric grid used behind sections */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
-  background-size: 56px 56px;
+
+p { text-wrap: pretty; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Hero entrance: CSS so it runs without JS and content is never hidden if scripts fail. */
+@keyframes enter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.enter {
+  animation: enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--enter-delay, 0s);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .enter { animation: none; }
 }
 
 /* One container for every section and the nav: equal left/right edges. */
@@ -78,5 +89,5 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: 56px;
+  padding-block: 40px;
 }

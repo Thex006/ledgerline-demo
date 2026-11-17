@@ -1,19 +1,11 @@
-"use client";
+import type { CSSProperties, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
-import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
-
-/** One-time entrance on page load (hero only). Transform/opacity only. */
+/** One-time hero entrance on page load. Pure CSS (transform/opacity), disabled under reduced motion. */
 export function Enter({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
-  const reduce = useReducedMotion();
   return (
-    <motion.div
-      className={className}
-      initial={reduce ? false : { opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className={cn("enter", className)} style={{ "--enter-delay": `${delay}s` } as CSSProperties}>
       {children}
-    </motion.div>
+    </div>
   );
 }

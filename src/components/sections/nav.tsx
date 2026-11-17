@@ -11,8 +11,8 @@ const LINKS = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-xl">
-      <nav className="wrap flex h-16 items-center justify-between" aria-label="Main">
+    <header className="sticky top-0 z-40 h-16 border-b border-border bg-background/80 backdrop-blur-xl">
+      <nav className="wrap flex h-full items-center justify-between" aria-label="Main">
         <Link href="/" aria-label="Ledgerline home">
           <Logo />
         </Link>

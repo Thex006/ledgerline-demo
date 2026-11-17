@@ -18,7 +18,6 @@ export function Pricing() {
           <SectionHeading
             eyebrow="Pricing"
             title="Priced against the hours you get back."
-            sub="One flat monthly price by revenue band. Transactions, seats and onboarding are included."
           />
 
           <div className="mt-8 flex items-center gap-4">
@@ -29,7 +28,7 @@ export function Pricing() {
               onCheckedChange={(on) => setCycle(on ? "annual" : "monthly")}
             />
             <span className={cn("text-sm transition-colors", cycle === "annual" ? "text-foreground" : "text-muted")}>Annual</span>
-            <span className="rounded-full bg-accent/12 px-2.5 py-1 font-mono text-[11px] text-accent ring-1 ring-inset ring-accent/25">
+            <span className="rounded-full bg-accent/12 px-2.5 py-1 font-mono text-xs text-accent ring-1 ring-inset ring-accent/25">
               2.4 months free
             </span>
           </div>
@@ -46,7 +45,7 @@ export function Pricing() {
                   )}
                 >
                   {plan.featured && (
-                    <span className="absolute right-6 top-6 rounded-full bg-accent px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent-ink">
+                    <span className="absolute right-6 top-6 rounded-full bg-accent px-2.5 py-1 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-accent-ink">
                       Most chosen
                     </span>
                   )}
@@ -62,7 +61,7 @@ export function Pricing() {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -28, opacity: 0 }}
                         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                        className="text-5xl font-semibold tabular-nums tracking-[-0.04em] text-foreground"
+                        className="text-4xl font-semibold tabular-nums md:text-5xl tracking-[-0.04em] text-foreground"
                       >
                         {price.toLocaleString("en-IE")}
                       </motion.span>

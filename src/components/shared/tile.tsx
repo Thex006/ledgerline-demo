@@ -12,6 +12,6 @@ export function Tile({ className, children }: { className?: string; children: Re
 
 export function TileLabel({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("font-mono text-[11px] uppercase tracking-[0.14em] text-muted", className)}>{children}</p>
+    <p className={cn("font-mono text-xs uppercase tracking-[0.14em] text-muted", className)}>{children}</p>
   );
 }

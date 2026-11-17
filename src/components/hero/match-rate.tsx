@@ -11,7 +11,7 @@ export function MatchRate({ className }: { className?: string }) {
   return (
     <Tile className={className}>
       <TileLabel>Auto-match rate</TileLabel>
-      <p className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-foreground">
+      <p className="mt-3 text-4xl font-semibold md:text-5xl tracking-[-0.04em] text-foreground">
         99.7<span className="text-muted">%</span>
       </p>
       <div className="mt-4 grid grid-cols-12 gap-1" aria-hidden>

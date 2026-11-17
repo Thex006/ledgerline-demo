@@ -54,7 +54,7 @@ export function ReconFeed({ className }: { className?: string }) {
     <Tile className={cn("flex flex-col", className)}>
       <div className="flex items-center justify-between">
         <TileLabel>Live reconciliation</TileLabel>
-        <span className="inline-flex items-center gap-2 font-mono text-[11px] text-muted">
+        <span className="inline-flex items-center gap-2 font-mono text-xs text-muted">
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-accent" />
@@ -76,13 +76,13 @@ export function ReconFeed({ className }: { className?: string }) {
             >
               <div className="min-w-0">
                 <p className="truncate text-foreground">{r.source}</p>
-                <p className="font-mono text-[11px] text-muted-2">{r.ref}</p>
+                <p className="font-mono text-xs text-muted-2">{r.ref}</p>
               </div>
               <div className="flex shrink-0 items-center gap-3">
                 <span className="font-mono tabular-nums text-foreground">{r.amount}</span>
                 <span
                   className={cn(
-                    "hidden rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 ring-inset sm:inline-block",
+                    "hidden rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset sm:inline-block",
                     STATUS[r.status].className,
                   )}
                 >

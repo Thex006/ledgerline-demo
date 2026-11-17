@@ -93,8 +93,7 @@ export function DemoSignup() {
     <section id="demo" className="screen scroll-mt-16 border-t border-border bg-card/30">
       <div className="wrap grid gap-12 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-5 md:pr-10">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">Book a demo</p>
-          <h2 className="mt-4 text-balance text-4xl font-semibold tracking-[-0.035em] text-foreground md:text-6xl md:leading-[1.02]">
+          <h2 className="text-balance text-4xl font-semibold tracking-[-0.035em] text-foreground md:text-5xl md:leading-[1.05]">
             Your next close could take 9 minutes.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">
