@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { demoRequestSchema } from "@/lib/validation";
 import { scoreLead } from "@/lib/lead-score";
-import { insertDemoRequest } from "@/lib/db";
+import { DatabaseNotConfiguredError, insertDemoRequest } from "@/lib/db";
 
 export const runtime = "nodejs";
 
@@ -28,6 +28,13 @@ export async function POST(req: Request) {
   try {
     await insertDemoRequest(parsed.data, score);
   } catch (err) {
+    if (err instanceof DatabaseNotConfiguredError) {
+      console.error("[demo] DATABASE_URL missing");
+      return NextResponse.json(
+        { ok: false, error: "Bookings are paused on this preview. Please try again shortly." },
+        { status: 503 },
+      );
+    }
     console.error("[demo] insert failed", err);
     return NextResponse.json(
       { ok: false, error: "We couldn't save your request. Please try again in a minute." },
