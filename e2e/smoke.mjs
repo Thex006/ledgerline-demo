@@ -1,7 +1,7 @@
 // End-to-end smoke test against a running server.
 // Usage: npm run dev                  (in one terminal)
 //        node e2e/smoke.mjs [baseUrl]  (in another)
-// Uses Playwright's bundled Chromium if installed, otherwise your installed Chrome or Edge,
+// Uses your installed Chrome first, then Playwright's bundled Chromium, then Edge,
 // so no browser download is needed. Force one with E2E_BROWSER=chrome|msedge.
 import { chromium } from "playwright";
 
@@ -14,7 +14,7 @@ const check = (name, ok, detail = "") => {
 
 async function launchBrowser() {
   const forced = process.env.E2E_BROWSER;
-  const attempts = forced ? [forced] : ["bundled", "chrome", "msedge"];
+  const attempts = forced ? [forced] : ["chrome", "bundled", "msedge"];
   for (const channel of attempts) {
     try {
       return await chromium.launch(channel === "bundled" ? {} : { channel });
